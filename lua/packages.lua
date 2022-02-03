@@ -9,21 +9,15 @@ return require('packer').startup(function(use)
     use { 'wbthomason/packer.nvim' }
 
     use {
-        'akinsho/bufferline.nvim',
-        requires = 'kyazdani42/nvim-web-devicons',
-        config = function() require('bufferline').setup() end
+        'lewis6991/gitsigns.nvim',
+        requires = 'nvim-lua/plenary.nvim',
+        config = function() require('gitsigns').setup() end
     }
 
     use {
         'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+        requires = 'kyazdani42/nvim-web-devicons',
         config = function() require('lualine').setup() end
-    }
-
-    use {
-        'lewis6991/gitsigns.nvim',
-        requires = 'nvim-lua/plenary.nvim',
-        config = function() require('gitsigns').setup() end
     }
 
     use {
@@ -31,6 +25,12 @@ return require('packer').startup(function(use)
         requires = 'kyazdani42/nvim-web-devicons',
         cmd = { 'NvimTreeToggle', 'NvimTreeFocus', 'NvimTreeRefresh' },
         config = function() require('plugins.nvimtree').setup() end
+    }
+
+    use {
+        'akinsho/bufferline.nvim',
+        requires = 'kyazdani42/nvim-web-devicons',
+        config = function() require('plugins.bufferline').setup() end
     }
 
     use {
@@ -49,7 +49,7 @@ return require('packer').startup(function(use)
 
     use {
         'rebelot/kanagawa.nvim',
-        config = function() require('kanagawa.colors').setup() end
+        config = function() require('kanagawa').setup() end
     }
 
     use {

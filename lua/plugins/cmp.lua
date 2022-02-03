@@ -1,7 +1,7 @@
 local module = {}
 
 module.setup = function()
-    -- vim.opt.completeopt = "menu,menuone,noselect"
+    vim.opt.completeopt = "menu,menuone,noselect"
 
     local cmp = require 'cmp'
     local luasnip = require 'luasnip'

@@ -3,9 +3,10 @@ local module = {}
 local setup_servers = function()
     local custom_server_opts = require 'configs.lsp'
     local lsp_installer = require 'nvim-lsp-installer'
+    local cmp_lsp = require 'cmp_nvim_lsp'
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+    capabilities = cmp_lsp.update_capabilities(capabilities)
 
     lsp_installer.on_server_ready(function(server)
         local opts = { capabilities = capabilities }
