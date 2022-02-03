@@ -1,9 +1,8 @@
 local module = {}
 
-local custom_server_opts = require 'configs.lsp'
-
 local setup_servers = function()
-    local lsp_installer = require("nvim-lsp-installer")
+    local custom_server_opts = require 'configs.lsp'
+    local lsp_installer = require 'nvim-lsp-installer'
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)

@@ -1,7 +1,7 @@
 local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-    local packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    PACKER_BOOTSTRAP = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
 
 
@@ -72,21 +72,15 @@ return require('packer').startup(function(use)
         'hrsh7th/nvim-cmp',
         requires = {
             'hrsh7th/cmp-buffer',
-            'hrsh7th/cmp-path'
+            'hrsh7th/cmp-path',
+            'saadparwaiz1/cmp_luasnip',
+            'L3MON4D3/LuaSnip',
+            'onsails/lspkind-nvim',
         },
         config = function() require('plugins.cmp').setup() end
     }
 
-    use {
-        'onsails/lspkind-nvim',
-        config = function() require('plugins.lspkind').setup() end
-    }
-
-    use { 'andymass/vim-matchup', event = 'CursorMoved'}
-
-    use { 'sbdchd/neoformat' , cmd = 'Neoformat'}
-
-    use { 'mg979/vim-visual-multi' }
+    use { 'sbdchd/neoformat', cmd = 'Neoformat'}
 
     use {
         'terrortylor/nvim-comment',
@@ -94,9 +88,13 @@ return require('packer').startup(function(use)
         config = function() require('nvim_comment').setup() end
     }
 
+    use { 'andymass/vim-matchup', event = 'CursorMoved'}
+
+    use { 'mg979/vim-visual-multi', event = 'BufRead' }
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
-    if packer_bootstrap then
+    if PACKER_BOOTSTRAP then
         require('packer').sync()
     end
 end)
