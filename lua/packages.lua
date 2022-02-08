@@ -8,6 +8,8 @@ end
 return require('packer').startup(function(use)
     use { 'wbthomason/packer.nvim' }
 
+    use { 'tpope/vim-fugitive' }
+
     use {
         'lewis6991/gitsigns.nvim',
         requires = 'nvim-lua/plenary.nvim',

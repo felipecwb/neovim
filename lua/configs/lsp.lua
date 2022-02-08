@@ -6,6 +6,7 @@ return {
             python = {
                 venvPath = ".venv",
                 analysis = {
+                    useLibraryCodeForTypes = true,
                     extraPaths = { ".", "./src" }
                 }
             }
