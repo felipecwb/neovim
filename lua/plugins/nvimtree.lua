@@ -1,16 +1,22 @@
 local module = {}
 
 module.setup = function()
-    require('nvim-tree').setup {
-        disable_netrw       = true,
+    require("nvim-tree").setup({
         hijack_netrw        = true,
+        disable_netrw       = true,
+        open_on_tab         = true,
         open_on_setup       = true,
+        ignore_ft_on_setup  = {},
         auto_close          = false,
-        open_on_tab         = false,
         update_cwd          = false,
         update_to_buf_dir   = {
             enable = true,
-            auto_open = true,
+            auto_open = false,
+        },
+        update_focused_file = {
+            enable      = false,
+            update_cwd  = false,
+            ignore_list = {},
         },
         diagnostics = {
             enable = true,
@@ -21,16 +27,13 @@ module.setup = function()
                 error = "",
             }
         },
-        update_focused_file = {
-            enable      = true,
-            update_cwd  = false,
-        },
         system_open = {
-            cmd  = "xdg-open",
+            cmd  = nil,
             args = {}
         },
         filters = {
-            dotfiles = false
+            dotfiles = false,
+            custom = {}
         },
         git = {
             enable = true,
@@ -38,23 +41,24 @@ module.setup = function()
             timeout = 500,
         },
         view = {
-            width = 30,
+            width = 40,
             height = 30,
-            auto_resize = false,
-            hide_root_folder = false,
             side = 'left',
-            mappings = {
-                custom_only = false,
-                list = {}
-            },
+            hide_root_folder = false,
+            auto_resize = false,
             number = false,
-            signcolumn = "yes"
+            relativenumber = false,
+            signcolumn = "yes",
+            mappings = {
+              custom_only = false,
+              list = {}
+            },
         },
-        trash = {
-            cmd = "trash",
-            require_confirm = true
+        actions = {
+            change_dir = { global = false },
+            open_file = { quit_on_open = false }
         }
-    }
+    })
 end
 
 return module
