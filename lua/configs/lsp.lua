@@ -4,7 +4,7 @@ return {
     ["pyright"] = function(opts)
         opts.settings = {
             python = {
-                venvPath = ".venv",
+                -- venvPath = ".venv",
                 analysis = {
                     useLibraryCodeForTypes = true,
                     extraPaths = { ".", "./src" }
