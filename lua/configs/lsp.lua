@@ -1,21 +1,26 @@
 
 -- override LSP configs
 return {
-    ["pyright"] = function(opts)
-        opts.settings = {
-            python = {
-                -- venvPath = ".venv",
-                analysis = {
-                    useLibraryCodeForTypes = true,
-                    extraPaths = { ".", "./src" }
+    pylsp = {
+        pylsp = {
+            plugins = {
+                jedi = {
+                    extra_paths = { ".", "src" }
                 }
             }
         }
-    end,
-    ["eslintls"] = function(opts)
-        opts.settings = {
-            format = { enable = true }
+    },
+    pyright = {
+        python = {
+            -- venvPath = ".venv",
+            analysis = {
+                useLibraryCodeForTypes = true,
+                extraPaths = { ".", "src" }
+            }
         }
-    end,
+    },
+    eslintls = {
+        format = { enable = true }
+    },
 }
 
