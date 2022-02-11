@@ -78,7 +78,7 @@ return require('packer').startup(function(use)
             'L3MON4D3/LuaSnip',
             'onsails/lspkind-nvim',
         },
-        config = function() require('plugins.cmp').setup() end
+        config = function() require('plugins.nvim-cmp').setup() end
     }
 
     use { 'sbdchd/neoformat', cmd = 'Neoformat'}

@@ -29,9 +29,8 @@ local on_attach = function(client, bufnr)
 end
 
 local setup_servers = function()
-    local lsp_installer = require 'nvim-lsp-installer'
     local cmp_lsp = require 'cmp_nvim_lsp'
-
+    local lsp_installer = require 'nvim-lsp-installer'
     local custom_server_opts = require 'configs.lsp'
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()

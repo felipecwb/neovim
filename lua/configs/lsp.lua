@@ -6,7 +6,12 @@ return {
             plugins = {
                 jedi = {
                     extra_paths = { ".", "src" }
-                }
+                },
+                flake8 = { enabled = true },
+                pylint = { enabled = true },
+                pydocstyle = { enabled = true },
+                pyflakes = { enabled = false },
+                pycodestyle = { enabled = false },
             }
         }
     },
