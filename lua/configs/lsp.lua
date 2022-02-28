@@ -8,11 +8,16 @@ return {
                 jedi = {
                     extra_paths = { ".", "src" }
                 },
-                flake8 = { enabled = true },
+                flake8 = {
+                    enabled = true,
+                    ignore = { "E203", "E241", "W503" },
+                },
+                black = { enabled = true },
                 pyflakes = { enabled = true },
-                pydocstyle = { enabled = false },
-                pycodestyle = { enabled = false },
+                mypy = { enabled = true },
                 pylint = { enabled = false },
+                pycodestyle = { enabled = false },
+                pydocstyle = { enabled = false },
             }
         }
     },
