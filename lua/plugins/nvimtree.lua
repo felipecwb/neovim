@@ -14,7 +14,7 @@ module.setup = function()
             auto_open = false,
         },
         update_focused_file = {
-            enable      = true,
+            enable      = false,
             update_cwd  = true,
             ignore_list = {},
         },

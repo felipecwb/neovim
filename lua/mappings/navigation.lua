@@ -18,7 +18,7 @@ fn.map("n", "<C-Right>", "<C-w>l")
 
 -- nvimtree
 fn.map("n", "<C-e>", ":NvimTreeToggle<CR>")
-fn.map("n", "<leader>e", ":NvimTreeFindFile<CR>")
+fn.map("n", "<A-e>", ":NvimTreeFindFile<CR>")
 
 -- terminal
 fn.map("n", "<leader>sh", [[<Cmd> split | resize 10 | terminal <CR>]])
