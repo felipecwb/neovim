@@ -1,4 +1,16 @@
 
+--[[
+Intalled Servers:
+    - bashls
+    - ccls (c, c++, objective-c)
+    - clojure_lsp
+    - cmake
+    - dockerls
+    - jsonls
+    - pylsp (python)
+    - sumneko_lua (lua)
+]]
+
 -- override LSP configs
 return {
     pylsp = {

@@ -1,14 +1,28 @@
 
 return {
     "bash",
+    "c",
+    "cpp",
+    "cmake",
+    "clojure",
+    "dockerfile",
+    "go",
+    "gomod",
     "html",
-    "toml",
-    "regex",
-    "json",
+    "http",
     "javascript",
-    "python",
-    "php",
+    "json",
+    "latex",
     "lua",
-    "go"
+    "make",
+    "markdown",
+    "nix",
+    "php",
+    "python",
+    "query",
+    "regex",
+    "toml",
+    "vim",
+    "yaml"
 }
 
