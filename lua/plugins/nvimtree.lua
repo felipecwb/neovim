@@ -5,16 +5,12 @@ module.setup = function()
         hijack_netrw        = true,
         disable_netrw       = true,
         open_on_tab         = true,
-        open_on_setup       = true,
+        open_on_setup       = false,
         update_cwd          = false,
-        update_to_buf_dir   = {
-            enable = true,
-            auto_open = false,
-        },
         ignore_ft_on_setup  = {},
         update_focused_file = {
             enable      = false,
-            update_cwd  = true,
+            update_cwd  = false,
             ignore_list = {},
         },
         diagnostics = {
@@ -41,9 +37,7 @@ module.setup = function()
         },
         view = {
             width = 40,
-            height = 30,
             side = 'left',
-            auto_resize = true,
             hide_root_folder = false,
             number = false,
             relativenumber = false,
