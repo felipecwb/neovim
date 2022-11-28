@@ -51,6 +51,7 @@ return require('packer').startup(function(use)
 
     use {
         'rebelot/kanagawa.nvim',
+        commit = 'fc2e308',
         config = function() require('kanagawa').setup() end
     }
 
