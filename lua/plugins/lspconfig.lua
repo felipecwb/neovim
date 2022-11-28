@@ -33,16 +33,13 @@ local setup_servers = function()
     local lsp_installer = require 'nvim-lsp-installer'
     local custom_server_opts = require 'configs.lsp'
 
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = cmp_lsp.update_capabilities(capabilities)
+    local capabilities = cmp_lsp.default_capabilities()
 
     lsp_installer.on_server_ready(function(server)
         local opts = {
-            on_attach = on_attach,
             capabilities = capabilities,
-            flags = {
-                debounce_text_changes = 150,
-            },
+            on_attach = on_attach,
+            flags = { debounce_text_changes = 150 },
         }
 
         if custom_server_opts[server.name] then

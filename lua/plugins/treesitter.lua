@@ -3,6 +3,7 @@ local module = {}
 module.setup = function()
     require('nvim-treesitter.configs').setup {
         ensure_installed = require 'configs.treesitter',
+        auto_install = true,
         highlight = {
             enable = true,
             use_languagetree = true
