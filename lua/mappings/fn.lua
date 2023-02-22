@@ -8,7 +8,6 @@ function module.map(mode, key, cmd, opts)
     end
 
     vim.keymap.set(mode, key, cmd, options)
-    -- vim.api.nvim_set_keymap(mode, key, cmd, options)
 end
 
 return module
