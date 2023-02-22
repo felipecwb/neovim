@@ -1,6 +1,6 @@
 local module = {}
 
-module.setup = function()
+function module.setup()
     vim.g.indentLine_enabled = 1
     vim.g.indent_blankline_char = '▏'
 

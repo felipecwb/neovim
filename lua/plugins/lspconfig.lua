@@ -1,64 +1,75 @@
 local module = {}
 
-local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-  local opts = { noremap = true, silent = true }
-
-  -- Enable completion triggered by <c-x><c-o>
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
-  buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', '<space>k', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  -- buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  -- buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  -- buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  -- buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
-  buf_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
-  buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-end
-
-local setup_servers = function()
-    local cmp_lsp = require 'cmp_nvim_lsp'
-    local lsp_installer = require 'nvim-lsp-installer'
-    local custom_server_opts = require 'configs.lsp'
-
-    local capabilities = cmp_lsp.default_capabilities()
-
-    lsp_installer.on_server_ready(function(server)
-        local opts = {
-            capabilities = capabilities,
-            on_attach = on_attach,
-            flags = { debounce_text_changes = 150 },
+local defaults = {
+    servers = require "configs.lsp",
+    flags = { debounce_text_changes = 200 },
+    ui = {
+        icons = {
+            package_installed = "✓",
+            package_pending = "➜",
+            package_uninstalled = "✗"
         }
+    },
+    mappings = {
+        gD = vim.lsp.buf.declaration,
+        gd = vim.lsp.buf.definition,
+        gi = vim.lsp.buf.implementation,
+        gr = vim.lsp.buf.references,
+        K = vim.lsp.buf.hover,
+        ['<C-k>'] = vim.lsp.buf.signature_help,
+        ['<space>D'] = vim.lsp.buf.type_definition,
+        ['<space>f'] = function() vim.lsp.buf.format { async = true } end,
+        ['<space>rn'] = vim.lsp.buf.rename,
+        ['<space>ca'] = vim.lsp.buf.code_action,
+        ['<space>e'] = vim.diagnostic.open_float,
+        ['<space>q'] = vim.diagnostic.setloclist,
+        ['[d'] = vim.diagnostic.goto_prev,
+        [']d'] = vim.diagnostic.goto_next,
+    },
+}
 
-        if custom_server_opts[server.name] then
-            opts.settings = custom_server_opts[server.name]
-        end
-
-        server:setup(opts)
-    end)
+function defaults.servers_list()
+    local servers = {}
+    for server, _ in pairs(defaults.servers) do table.insert(servers, server) end
+    return servers
 end
 
+local function on_attach(client, bufnr)
+    -- Enable completion triggered by <c-x><c-o>
+    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-module.setup = function()
-    -- replace the default lsp diagnostic letters with prettier symbols
-    vim.fn.sign_define("LspDiagnosticsSignError", {text = "", numhl = "LspDiagnosticsDefaultError"})
-    vim.fn.sign_define("LspDiagnosticsSignWarning", {text = "", numhl = "LspDiagnosticsDefaultWarning"})
-    vim.fn.sign_define("LspDiagnosticsSignInformation", {text = "", numhl = "LspDiagnosticsDefaultInformation"})
-    vim.fn.sign_define("LspDiagnosticsSignHint", {text = "", numhl = "LspDiagnosticsDefaultHint"})
+    local opts = { noremap = true, silent = true, buffer = bufnr }
+    for key, cmd in pairs(defaults.mappings or {}) do
+        vim.keymap.set('n', key, cmd, opts)
+    end
+end
 
-    setup_servers()
+function module.setup()
+    local mason = require "mason"
+    local mason_lspconfig = require "mason-lspconfig"
+    local lspconfig = require "lspconfig"
+
+    -- mason
+    mason.setup { ui = defaults.ui }
+    mason_lspconfig.setup {
+        ensure_installed = defaults.servers_list(),
+        automatic_installation = true,
+    }
+
+    -- lspconfig
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    local ok, cmp = pcall(require, 'cmp_nvim_lsp')
+    if ok then
+        capabilities = cmp.default_capabilities(capabilities)
+    end
+
+    for server, config in pairs(defaults.servers) do
+        config.flags = defaults.flags
+        config.capabilities = capabilities
+        config.on_attach = on_attach
+
+        lspconfig[server].setup(config)
+    end
 end
 
 return module

@@ -51,7 +51,6 @@ return require('packer').startup(function(use)
 
     use {
         'rebelot/kanagawa.nvim',
-        commit = 'fc2e308',
         config = function() require('kanagawa').setup() end
     }
 
@@ -64,8 +63,10 @@ return require('packer').startup(function(use)
     use {
         'neovim/nvim-lspconfig',
         requires = {
-            'williamboman/nvim-lsp-installer',
-            'hrsh7th/cmp-nvim-lsp'
+            'williamboman/mason.nvim',
+            'williamboman/mason-lspconfig.nvim',
+            'hrsh7th/cmp-nvim-lsp',
+            'onsails/lspkind-nvim',
         },
         config = function() require('plugins.lspconfig').setup() end
     }
@@ -75,6 +76,7 @@ return require('packer').startup(function(use)
         requires = {
             'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-path',
+            'hrsh7th/cmp-nvim-lsp',
             'saadparwaiz1/cmp_luasnip',
             'L3MON4D3/LuaSnip',
             'onsails/lspkind-nvim',

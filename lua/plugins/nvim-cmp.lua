@@ -1,11 +1,11 @@
 local module = {}
 
-module.setup = function()
+function module.setup()
     local cmp = require 'cmp'
     local luasnip = require 'luasnip'
     local lspkind = require 'lspkind'
 
-    local next_item = function(fallback)
+    local function next_item(fallback)
         if cmp.visible() then
             cmp.select_next_item()
         elseif luasnip.expand_or_jumpable() then
@@ -15,7 +15,7 @@ module.setup = function()
         end
     end
 
-    local previous_item = function(fallback)
+    local function previous_item(fallback)
         if cmp.visible() then
             cmp.select_prev_item()
         elseif luasnip.jumpable(-1) then
@@ -40,8 +40,9 @@ module.setup = function()
         },
         formatting = {
             format = lspkind.cmp_format({
-                with_text = true,
+                mode = 'symbol',
                 maxwidth = 50,
+                with_text = true,
             })
         },
         completion = { completeopt = 'menu,menuone,noinsert' },

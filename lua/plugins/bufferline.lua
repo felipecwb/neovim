@@ -1,6 +1,6 @@
 local module = {}
 
-module.setup = function()
+function module.setup()
     require('bufferline').setup({
         options = {
             offsets = { { filetype = "NvimTree", text = "File Explorer", padding = 1 } },

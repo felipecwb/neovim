@@ -1,6 +1,6 @@
 local module = {}
 
-module.setup = function()
+function module.setup()
     require("nvim-tree").setup({
         hijack_netrw        = true,
         disable_netrw       = true,

@@ -1,6 +1,6 @@
 local module = {}
 
-module.setup = function()
+function module.setup()
     require('nvim-treesitter.configs').setup {
         ensure_installed = require 'configs.treesitter',
         auto_install = true,
