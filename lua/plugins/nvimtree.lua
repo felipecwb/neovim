@@ -1,16 +1,17 @@
 local module = {}
 
 function module.setup()
-    require("nvim-tree").setup({
-        hijack_netrw        = true,
-        disable_netrw       = true,
-        open_on_tab         = true,
-        open_on_setup       = true,
-        update_cwd          = false,
-        ignore_ft_on_setup  = {},
+    local nvimtree = require "nvim-tree"
+    local api = require "nvim-tree.api"
+
+    nvimtree.setup({
+        hijack_netrw = true,
+        disable_netrw = true,
+        open_on_tab = true,
+        update_cwd = false,
         update_focused_file = {
-            enable      = false,
-            update_cwd  = false,
+            enable = false,
+            update_cwd = false,
             ignore_list = {},
         },
         diagnostics = {
@@ -23,7 +24,7 @@ function module.setup()
             }
         },
         system_open = {
-            cmd  = nil,
+            cmd = "xdg-open",
             args = {}
         },
         filters = {
@@ -37,20 +38,24 @@ function module.setup()
         },
         view = {
             width = 45,
-            side = 'left',
-            hide_root_folder = false,
             number = false,
-            relativenumber = false,
+            side = 'left',
             signcolumn = "yes",
+            relativenumber = false,
+            hide_root_folder = false,
             mappings = {
-              custom_only = false,
-              list = {}
+                custom_only = false,
+                list = {}
             },
         },
         actions = {
+            open_file = { quit_on_open = false },
             change_dir = { global = false },
-            open_file = { quit_on_open = false }
         }
+    })
+
+    vim.api.nvim_create_autocmd({ "VimEnter" }, {
+        callback = function() api.tree.open() end
     })
 end
 
