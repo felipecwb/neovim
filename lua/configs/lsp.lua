@@ -1,4 +1,3 @@
-
 return {
     bashls = {},
     clangd = {},
@@ -10,7 +9,7 @@ return {
         settings = {
             Lua = {
                 diagnostics = {
-                    globals = {'vim'},
+                    globals = { 'vim' },
                 },
                 telemetry = {
                     enable = false,
@@ -46,4 +45,3 @@ return {
         }
     },
 }
-

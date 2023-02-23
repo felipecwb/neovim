@@ -48,10 +48,10 @@ function module.setup()
         completion = { completeopt = 'menu,menuone,noinsert' },
         mapping = {
             ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-            ['<Tab>'] = cmp.mapping(next_item, {"i", "s"}),
-            ['<S-Tab>'] = cmp.mapping(previous_item, {"i", "s"}),
-            ['<Down>'] = cmp.mapping(next_item, {"i", "s"}),
-            ['<Up>'] = cmp.mapping(previous_item, {"i", "s"}),
+            ['<Tab>'] = cmp.mapping(next_item, { "i", "s" }),
+            ['<S-Tab>'] = cmp.mapping(previous_item, { "i", "s" }),
+            ['<Down>'] = cmp.mapping(next_item, { "i", "s" }),
+            ['<Up>'] = cmp.mapping(previous_item, { "i", "s" }),
             ['<Esc>'] = cmp.mapping.close(),
             ['<CR>'] = cmp.mapping.confirm({
                 behavior = cmp.ConfirmBehavior.Insert,

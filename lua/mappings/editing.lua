@@ -1,4 +1,3 @@
-
 local fn = require 'mappings.fn'
 
 -- dont copy any deleted/substitute text
@@ -48,4 +47,3 @@ vim.g.VM_maps = {
     ['Add Cursor Up']   = '<C-S-Up>',
     ['Add Cursor Down'] = '<C-S-Down>',
 }
-

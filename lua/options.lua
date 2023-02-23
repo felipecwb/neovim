@@ -1,4 +1,3 @@
-
 vim.opt.wrap = false
 vim.opt.ruler = true
 vim.opt.number = true
@@ -16,7 +15,7 @@ vim.opt.scrolloff = 3
 vim.opt.sidescroll = 3
 
 vim.opt.gfn = 'Hack Nerd Font Mono'
-vim.opt.guifont ='Hack Nerd Font Mono:h12'
+vim.opt.guifont = 'Hack Nerd Font Mono:h12'
 
 vim.opt.autoread = true
 vim.opt.encoding = 'utf-8'
@@ -45,7 +44,7 @@ vim.opt.magic = true
 vim.opt.backup = false
 vim.opt.swapfile = false
 vim.opt.dir = { '~/.cache/nvim/swap//', '/tmp/nvim//', '.' }
-vim.opt.tags = { '~/.cache/nvim/tag//', '/tmp/nvim//', ''}
+vim.opt.tags = { '~/.cache/nvim/tag//', '/tmp/nvim//', '' }
 
 vim.opt.list = true
 vim.opt.listchars = { tab = '▸→', trail = '·', extends = '❯', precedes = '❮' }
@@ -59,4 +58,3 @@ vim.opt.grepprg = 'rg --vimgrep'
 vim.opt.grepformat = '%f:%l:%c:%m'
 
 vim.opt.shell = '/usr/bin/zsh'
-

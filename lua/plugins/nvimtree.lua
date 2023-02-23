@@ -5,7 +5,7 @@ function module.setup()
         hijack_netrw        = true,
         disable_netrw       = true,
         open_on_tab         = true,
-        open_on_setup       = false,
+        open_on_setup       = true,
         update_cwd          = false,
         ignore_ft_on_setup  = {},
         update_focused_file = {
@@ -36,7 +36,7 @@ function module.setup()
             timeout = 500,
         },
         view = {
-            width = 40,
+            width = 45,
             side = 'left',
             hide_root_folder = false,
             number = false,

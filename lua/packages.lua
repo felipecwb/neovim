@@ -1,7 +1,8 @@
 local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-    PACKER_BOOTSTRAP = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    PACKER_BOOTSTRAP = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
+        install_path })
 end
 
 
@@ -44,8 +45,8 @@ return require('packer').startup(function(use)
     use {
         'nvim-telescope/telescope.nvim',
         requires = {
-            {'nvim-lua/plenary.nvim'},
-            {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
+            { 'nvim-lua/plenary.nvim' },
+            { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
         }
     }
 
@@ -84,15 +85,13 @@ return require('packer').startup(function(use)
         config = function() require('plugins.nvim-cmp').setup() end
     }
 
-    use { 'sbdchd/neoformat', cmd = 'Neoformat'}
-
     use {
         'terrortylor/nvim-comment',
         cmd = 'CommentToggle',
         config = function() require('nvim_comment').setup() end
     }
 
-    use { 'andymass/vim-matchup', event = 'CursorMoved'}
+    use { 'andymass/vim-matchup', event = 'CursorMoved' }
 
     use { 'mg979/vim-visual-multi', event = 'BufRead' }
 
@@ -102,4 +101,3 @@ return require('packer').startup(function(use)
         require('packer').sync()
     end
 end)
-

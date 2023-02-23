@@ -1,4 +1,3 @@
-
 return {
     "bash",
     "c",
@@ -25,4 +24,3 @@ return {
     "vim",
     "yaml"
 }
-
