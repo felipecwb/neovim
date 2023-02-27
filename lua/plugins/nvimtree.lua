@@ -1,10 +1,7 @@
 local module = {}
 
 function module.setup()
-    local nvimtree = require "nvim-tree"
-    local api = require "nvim-tree.api"
-
-    nvimtree.setup({
+    require("nvim-tree").setup({
         hijack_netrw = true,
         disable_netrw = true,
         open_on_tab = true,
@@ -54,9 +51,10 @@ function module.setup()
         }
     })
 
-    vim.api.nvim_create_autocmd({ "VimEnter" }, {
-        callback = function() api.tree.open() end
-    })
+    -- local api = require "nvim-tree.api"
+    -- vim.api.nvim_create_autocmd({ "VimEnter" }, {
+    --     callback = function() api.tree.open() end
+    -- })
 end
 
 return module
