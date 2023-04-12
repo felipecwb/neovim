@@ -6,4 +6,3 @@ require 'mappings'
 
 -- colorscheme
 vim.cmd('colorscheme kanagawa')
-

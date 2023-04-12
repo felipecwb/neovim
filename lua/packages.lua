@@ -50,10 +50,7 @@ return require('packer').startup(function(use)
         }
     }
 
-    use {
-        'rebelot/kanagawa.nvim',
-        config = function() require('kanagawa').setup() end
-    }
+    use { 'rebelot/kanagawa.nvim' }
 
     use {
         'nvim-treesitter/nvim-treesitter',
