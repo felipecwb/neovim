@@ -50,6 +50,9 @@ return require('packer').startup(function(use)
         }
     }
 
+    use { 'preservim/tagbar' }
+
+    -- themes
     use { 'rebelot/kanagawa.nvim' }
 
     use {
