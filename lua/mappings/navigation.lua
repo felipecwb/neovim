@@ -19,8 +19,9 @@ fn.map("n", "<C-Right>", "<C-w>l")
 fn.map("n", "<C-e>", ":NvimTreeToggle<CR>")
 fn.map("n", "<A-e>", ":NvimTreeFindFile<CR>")
 
--- tagbar
-fn.map("n", "<A-t>", [[<Cmd> Vista<CR>]])
+-- vista
+fn.map("n", "<A-t>", [[<Cmd>Vista<CR>]])
+fn.map("n", "<Leader>t", [[<Cmd>Vista finder<CR>]])
 
 -- terminal
 fn.map("n", "<leader>sh", [[<Cmd>belowright split | resize 10 | terminal <CR>i]])
