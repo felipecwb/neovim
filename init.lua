@@ -1,8 +1,8 @@
-
 require 'variables'
 require 'options'
 require 'packages'
 require 'mappings'
 
 -- colorscheme
-vim.cmd('colorscheme kanagawa')
+require('onedark').setup({style = 'darker'})
+vim.cmd('colorscheme onedark')

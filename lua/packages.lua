@@ -54,6 +54,7 @@ return require('packer').startup(function(use)
 
     -- themes
     use { 'rebelot/kanagawa.nvim' }
+    use { 'navarasu/onedark.nvim' }
 
     use {
         'nvim-treesitter/nvim-treesitter',
