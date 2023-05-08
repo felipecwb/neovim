@@ -36,7 +36,7 @@ return require('packer').startup(function(use)
         config = function() require('plugins.indent').setup() end
     }
 
-    use { 'preservim/tagbar' }
+    use { 'liuchengxu/vista.vim' }
     use { 'tpope/vim-fugitive' }
     use {
         'lewis6991/gitsigns.nvim',
