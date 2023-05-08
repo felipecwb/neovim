@@ -2,29 +2,21 @@ local module = {}
 
 local defaults = {
     servers = require "configs.lsp",
+    mappings = require "mappings.lsp",
     flags = { debounce_text_changes = 200 },
     ui = {
-        icons = {
-            package_installed = "✓",
-            package_pending = "➜",
-            package_uninstalled = "✗"
-        }
-    },
-    mappings = {
-        gD = vim.lsp.buf.declaration,
-        gd = vim.lsp.buf.definition,
-        gi = vim.lsp.buf.implementation,
-        gr = vim.lsp.buf.references,
-        K = vim.lsp.buf.hover,
-        ['<C-k>'] = vim.lsp.buf.signature_help,
-        ['<space>D'] = vim.lsp.buf.type_definition,
-        ['<space>f'] = function() vim.lsp.buf.format { async = true } end,
-        ['<space>rn'] = vim.lsp.buf.rename,
-        ['<space>ca'] = vim.lsp.buf.code_action,
-        ['<space>e'] = vim.diagnostic.open_float,
-        ['<space>q'] = vim.diagnostic.setloclist,
-        ['[d'] = vim.diagnostic.goto_prev,
-        [']d'] = vim.diagnostic.goto_next,
+        mason = {
+            icons = {
+                package_installed = "✓",
+                package_pending = "➜",
+                package_uninstalled = "✗"
+            }
+        },
+        diagnostic = {
+            border = "rounded",
+            prefix = "▎", -- "●",
+            signs = { Error = "", Warn = "", Hint = "", Info = "" },
+        },
     },
 }
 
@@ -34,7 +26,7 @@ function defaults.servers_list()
     return servers
 end
 
-local function on_attach(client, bufnr)
+local function on_attach(_, bufnr)
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -50,11 +42,22 @@ function module.setup()
     local lspconfig = require "lspconfig"
 
     -- mason
-    mason.setup { ui = defaults.ui }
+    mason.setup { ui = defaults.ui.mason }
     mason_lspconfig.setup {
         ensure_installed = defaults.servers_list(),
         automatic_installation = true,
     }
+
+    -- diagnostics
+    vim.diagnostic.config({
+        severity_sort = true,
+        virtual_text = { prefix = defaults.ui.diagnostic.prefix, source = "if_many" },
+        float = { border = defaults.ui.diagnostic.border, source = "if_many" },
+    })
+    for type, icon in pairs(defaults.ui.diagnostic.signs) do
+      local hl = "DiagnosticSign" .. type
+      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+    end
 
     -- lspconfig
     local capabilities = vim.lsp.protocol.make_client_capabilities()

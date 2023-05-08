@@ -1,16 +1,12 @@
 local module = {}
 
 function module.setup()
-    vim.g.indentLine_enabled = 1
-    vim.g.indent_blankline_char = '▏'
-
-    vim.g.indent_blankline_filetype_exclude = { 'help', 'terminal', 'dashboard' }
-    vim.g.indent_blankline_buftype_exclude = { 'terminal' }
-
-    vim.g.indent_blankline_show_trailing_blankline_indent = true
-    vim.g.indent_blankline_show_first_indent_level = false
-
-    require("indent_blankline").setup()
+    require("indent_blankline").setup({
+        show_trailing_blankline_indent = true,
+        show_first_indent_level = false,
+        buftype_exclude = { 'terminal' },
+        filetype_exclude = { 'help', 'terminal', 'dashboard' },
+    })
 end
 
 return module

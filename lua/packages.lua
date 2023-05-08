@@ -9,18 +9,10 @@ end
 return require('packer').startup(function(use)
     use { 'wbthomason/packer.nvim' }
 
-    use { 'tpope/vim-fugitive' }
-
+    -- themes
     use {
-        'lewis6991/gitsigns.nvim',
-        requires = 'nvim-lua/plenary.nvim',
-        config = function() require('gitsigns').setup() end
-    }
-
-    use {
-        'nvim-lualine/lualine.nvim',
-        requires = 'kyazdani42/nvim-web-devicons',
-        config = function() require('lualine').setup() end
+        'rebelot/kanagawa.nvim',
+        'navarasu/onedark.nvim'
     }
 
     use {
@@ -28,18 +20,28 @@ return require('packer').startup(function(use)
         requires = 'kyazdani42/nvim-web-devicons',
         config = function() require('plugins.nvimtree').setup() end
     }
-
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = 'kyazdani42/nvim-web-devicons',
+        config = function() require('plugins.lualine').setup() end
+    }
     use {
         'akinsho/bufferline.nvim',
-        tag = 'v2.*',
+        tag = "*",
         requires = 'kyazdani42/nvim-web-devicons',
         config = function() require('plugins.bufferline').setup() end
     }
-
     use {
         'lukas-reineke/indent-blankline.nvim',
-        event = 'BufRead',
         config = function() require('plugins.indent').setup() end
+    }
+
+    use { 'preservim/tagbar' }
+    use { 'tpope/vim-fugitive' }
+    use {
+        'lewis6991/gitsigns.nvim',
+        requires = 'nvim-lua/plenary.nvim',
+        config = function() require('gitsigns').setup() end
     }
 
     use {
@@ -49,12 +51,6 @@ return require('packer').startup(function(use)
             { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
         }
     }
-
-    use { 'preservim/tagbar' }
-
-    -- themes
-    use { 'rebelot/kanagawa.nvim' }
-    use { 'navarasu/onedark.nvim' }
 
     use {
         'nvim-treesitter/nvim-treesitter',
@@ -86,15 +82,13 @@ return require('packer').startup(function(use)
         config = function() require('plugins.nvim-cmp').setup() end
     }
 
+    use { 'andymass/vim-matchup', event = 'CursorMoved' }
+    use { 'mg979/vim-visual-multi', event = 'BufRead' }
     use {
         'terrortylor/nvim-comment',
         cmd = 'CommentToggle',
         config = function() require('nvim_comment').setup() end
     }
-
-    use { 'andymass/vim-matchup', event = 'CursorMoved' }
-
-    use { 'mg979/vim-visual-multi', event = 'BufRead' }
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
