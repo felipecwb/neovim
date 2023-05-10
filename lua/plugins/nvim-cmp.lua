@@ -40,9 +40,10 @@ function module.setup()
         },
         formatting = {
             format = lspkind.cmp_format({
-                mode = 'symbol',
+                mode = 'symbol_text',
+                -- preset = 'codicons',
                 maxwidth = 50,
-                with_text = true,
+                ellipsis_char = '...',
             })
         },
         completion = { completeopt = 'menu,menuone,noinsert' },
