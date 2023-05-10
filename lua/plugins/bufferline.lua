@@ -3,10 +3,11 @@ local module = {}
 function module.setup()
     require('bufferline').setup({
         options = {
-            separator_style = "thick",
             diagnostics = "nvim_lsp",
-            indicator = { style = 'underline', icon = '▎' },
-            offsets = {{ filetype = "NvimTree", text = "File Explorer" }},
+            -- separator_style = 'slant',
+            separator_style = 'thick',
+            indicator = { style = 'icon', icon = ' ' },
+            offsets = {{ filetype = "NvimTree", text = "File Explorer", text_align = "center" }},
             show_close_icon = true,
             show_tab_indicators = true,
             show_buffer_close_icons = true,
