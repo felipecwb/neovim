@@ -42,7 +42,11 @@ function module.setup()
     local lspconfig = require "lspconfig"
 
     -- mason
-    mason.setup { ui = defaults.ui.mason }
+    mason.setup {
+        PATH = 'append',
+        pip = { upgrade_pip = true },
+        ui = defaults.ui.mason,
+    }
     mason_lspconfig.setup {
         ensure_installed = defaults.servers_list(),
         automatic_installation = true,

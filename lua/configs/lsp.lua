@@ -8,19 +8,17 @@ return {
     lua_ls = {
         settings = {
             Lua = {
+                telemetry = { enable = false },
                 diagnostics = {
                     globals = { 'vim' },
                 },
-                telemetry = {
-                    enable = false,
-                }
             }
         }
     },
     pylsp = {
         settings = {
             pylsp = {
-                configurationSources = { "pycodestyle", "flake8", "black" },
+                configurationSources = { "flake8", "black", "mypy" },
                 plugins = {
                     jedi = {
                         extra_paths = { ".", "src" }
@@ -30,9 +28,9 @@ return {
                         ignore = { "E203", "E241", "W503" },
                     },
                     black = { enabled = true },
-                    pyflakes = { enabled = true },
                     mypy = { enabled = true },
                     pylint = { enabled = false },
+                    pyflakes = { enabled = false },
                     pycodestyle = { enabled = false },
                     pydocstyle = { enabled = false },
                 }
