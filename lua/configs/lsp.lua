@@ -28,7 +28,7 @@ return {
                         ignore = { "E203", "E241", "W503" },
                     },
                     black = { enabled = true },
-                    mypy = { enabled = true },
+                    mypy = { enabled = true, live_mode = false },
                     pylint = { enabled = false },
                     pyflakes = { enabled = false },
                     pycodestyle = { enabled = false },
