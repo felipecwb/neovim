@@ -12,13 +12,28 @@ return require('packer').startup(function(use)
     -- themes
     use {
         'rebelot/kanagawa.nvim',
-        'navarasu/onedark.nvim'
+        'navarasu/onedark.nvim',
+        'projekt0n/github-nvim-theme',
     }
 
+    -- interface
+    use {
+        'glepnir/dashboard-nvim',
+        event = 'VimEnter',
+        requires = {'nvim-tree/nvim-web-devicons'},
+        config = function() require('dashboard').setup({}) end,
+    }
     use {
         'kyazdani42/nvim-tree.lua',
         requires = 'kyazdani42/nvim-web-devicons',
         config = function() require('plugins.nvimtree').setup() end
+    }
+    use {
+        'nvim-telescope/telescope.nvim',
+        requires = {
+            { 'nvim-lua/plenary.nvim' },
+            { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+        }
     }
     use {
         'nvim-lualine/lualine.nvim',
@@ -33,31 +48,34 @@ return require('packer').startup(function(use)
     }
     use {
         'lukas-reineke/indent-blankline.nvim',
+        event = 'BufRead',
         config = function() require('plugins.indent').setup() end
     }
-
-    use { 'liuchengxu/vista.vim' }
-    use { 'tpope/vim-fugitive' }
     use {
         'lewis6991/gitsigns.nvim',
         requires = 'nvim-lua/plenary.nvim',
         config = function() require('gitsigns').setup() end
     }
 
-    use {
-        'nvim-telescope/telescope.nvim',
-        requires = {
-            { 'nvim-lua/plenary.nvim' },
-            { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-        }
-    }
-
+    -- code & git
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
         config = function() require('plugins.treesitter').setup() end
     }
+    use { 'liuchengxu/vista.vim', event = 'BufRead'}
+    use { 'tpope/vim-fugitive' }
 
+    -- code edition
+    use { 'mg979/vim-visual-multi', event = 'BufRead' }
+    use { 'andymass/vim-matchup', event = 'CursorMoved' }
+    use {
+        'terrortylor/nvim-comment',
+        cmd = 'CommentToggle',
+        config = function() require('nvim_comment').setup() end
+    }
+
+    -- LSP powers
     use {
         'neovim/nvim-lspconfig',
         requires = {
@@ -80,14 +98,6 @@ return require('packer').startup(function(use)
             'onsails/lspkind-nvim',
         },
         config = function() require('plugins.nvim-cmp').setup() end
-    }
-
-    use { 'andymass/vim-matchup', event = 'CursorMoved' }
-    use { 'mg979/vim-visual-multi', event = 'BufRead' }
-    use {
-        'terrortylor/nvim-comment',
-        cmd = 'CommentToggle',
-        config = function() require('nvim_comment').setup() end
     }
 
     -- Automatically set up your configuration after cloning packer.nvim
