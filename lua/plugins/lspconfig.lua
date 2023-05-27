@@ -3,6 +3,7 @@ local module = {}
 local defaults = {
     servers = require "configs.lsp",
     mappings = require "mappings.lsp",
+    disabled_extensions = "*.env",
     flags = { debounce_text_changes = 200 },
     ui = {
         mason = {
@@ -62,6 +63,12 @@ function module.setup()
       local hl = "DiagnosticSign" .. type
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
     end
+
+    vim.api.nvim_create_autocmd("BufEnter", {
+      pattern = defaults.disabled_extensions,
+      group = vim.api.nvim_create_augroup("diagnostic_disabled_extensions", {clear=true}),
+      callback = function(args) vim.diagnostic.disable(args.buf) end
+    })
 
     -- lspconfig
     local capabilities = vim.lsp.protocol.make_client_capabilities()
