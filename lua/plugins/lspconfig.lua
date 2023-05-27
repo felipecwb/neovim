@@ -63,7 +63,7 @@ function module.setup()
       local hl = "DiagnosticSign" .. type
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
     end
-
+    -- diagnostics disabled for certain extensions
     vim.api.nvim_create_autocmd("BufEnter", {
       pattern = defaults.disabled_extensions,
       group = vim.api.nvim_create_augroup("diagnostic_disabled_extensions", {clear=true}),
