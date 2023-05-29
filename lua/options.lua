@@ -39,6 +39,9 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.magic = true
 
+vim.opt.foldmethod = 'expr'
+vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+
 vim.opt.backup = false
 vim.opt.swapfile = false
 vim.opt.dir = { '~/.cache/nvim/swap//', '/tmp/nvim//', '.' }
