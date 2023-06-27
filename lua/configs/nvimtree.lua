@@ -32,11 +32,6 @@ return {
         signcolumn = "yes",
         relativenumber = false,
         hide_root_folder = false,
-        -- mappings = {
-        --     list = {
-        --         { key = "<C-e>", action = "" },
-        --     }
-        -- }
     },
     diagnostics = {
         enable = true,

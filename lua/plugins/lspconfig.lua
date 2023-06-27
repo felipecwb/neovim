@@ -3,7 +3,7 @@ local module = {}
 local defaults = {
     servers = require "configs.lsp",
     mappings = require "mappings.lsp",
-    disabled_extensions = "*.env",
+    disabled_extensions = {"*.env"},
     flags = { debounce_text_changes = 200 },
     ui = {
         mason = {
