@@ -42,4 +42,14 @@ return {
             error = "",
         }
     },
+    on_attach = function(bufnr)
+        local api = require('nvim-tree.api')
+        -- default mappings
+        api.config.mappings.default_on_attach(bufnr)
+        -- force close when in buffer
+        vim.keymap.del('n', '<C-e>', { buffer = bufnr })
+        vim.keymap.set('n', '<C-e>', api.tree.close, {
+            buffer = bufnr, noremap = true, silent = true, nowait = true
+        })
+    end,
 }

@@ -19,14 +19,18 @@ return require('packer').startup(function(use)
     -- interface
     use {
         'glepnir/dashboard-nvim',
-        event = 'VimEnter',
         requires = {'nvim-tree/nvim-web-devicons'},
-        config = function() require('plugins.dashboard').setup() end,
+        event = 'VimEnter',
+        config = function()
+            require('dashboard').setup(require('configs.dashboard'))
+        end,
     }
     use {
         'kyazdani42/nvim-tree.lua',
         requires = 'kyazdani42/nvim-web-devicons',
-        config = function() require('plugins.nvimtree').setup() end
+        config = function()
+            require("nvim-tree").setup(require('configs.nvimtree'))
+        end,
     }
     use {
         'nvim-telescope/telescope.nvim',
@@ -38,30 +42,40 @@ return require('packer').startup(function(use)
     use {
         'nvim-lualine/lualine.nvim',
         requires = 'kyazdani42/nvim-web-devicons',
-        config = function() require('plugins.lualine').setup() end
+        config = function()
+            require('lualine').setup(require('configs.lualine'))
+        end,
     }
     use {
         'akinsho/bufferline.nvim',
-        tag = "*",
         requires = 'kyazdani42/nvim-web-devicons',
-        config = function() require('plugins.bufferline').setup() end
+        config = function()
+            require('bufferline').setup(require('configs.bufferline'))
+        end,
     }
     use {
         'lukas-reineke/indent-blankline.nvim',
         event = 'BufRead',
-        config = function() require('plugins.indent').setup() end
+        config = function()
+            require("indent_blankline").setup(require('configs.indent'))
+
+        end,
     }
     use {
         'lewis6991/gitsigns.nvim',
         requires = 'nvim-lua/plenary.nvim',
-        config = function() require('gitsigns').setup() end
+        config = function()
+            require('gitsigns').setup()
+        end,
     }
 
     -- code & git
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
-        config = function() require('plugins.treesitter').setup() end
+        config = function()
+            require('nvim-treesitter.configs').setup(require('configs.treesitter'))
+        end,
     }
     use { 'liuchengxu/vista.vim', event = 'BufRead'}
     use { 'tpope/vim-fugitive' }
@@ -72,7 +86,9 @@ return require('packer').startup(function(use)
     use {
         'terrortylor/nvim-comment',
         cmd = 'CommentToggle',
-        config = function() require('nvim_comment').setup() end
+        config = function()
+            require('nvim_comment').setup()
+        end,
     }
 
     -- LSP powers
@@ -84,7 +100,10 @@ return require('packer').startup(function(use)
             'hrsh7th/cmp-nvim-lsp',
             'onsails/lspkind-nvim',
         },
-        config = function() require('plugins.lspconfig').setup() end
+        run = ':MasonUpdate',
+        config = function()
+            require('plugins.lspconfig').setup()
+        end,
     }
 
     use {
@@ -97,7 +116,9 @@ return require('packer').startup(function(use)
             'L3MON4D3/LuaSnip',
             'onsails/lspkind-nvim',
         },
-        config = function() require('plugins.nvim-cmp').setup() end
+        config = function()
+            require('plugins.nvim-cmp').setup()
+        end,
     }
 
     -- Automatically set up your configuration after cloning packer.nvim
