@@ -22,14 +22,14 @@ return require('packer').startup(function(use)
         requires = {'nvim-tree/nvim-web-devicons'},
         event = 'VimEnter',
         config = function()
-            require('dashboard').setup(require('configs.dashboard'))
+            require('dashboard').setup(require('config.cfg_dashboard'))
         end,
     }
     use {
         'kyazdani42/nvim-tree.lua',
         requires = 'kyazdani42/nvim-web-devicons',
         config = function()
-            require("nvim-tree").setup(require('configs.nvimtree'))
+            require("nvim-tree").setup(require('config.nvimtree'))
         end,
     }
     use {
@@ -43,21 +43,21 @@ return require('packer').startup(function(use)
         'nvim-lualine/lualine.nvim',
         requires = 'kyazdani42/nvim-web-devicons',
         config = function()
-            require('lualine').setup(require('configs.lualine'))
+            require('lualine').setup(require('config.cfg_lualine'))
         end,
     }
     use {
         'akinsho/bufferline.nvim',
         requires = 'kyazdani42/nvim-web-devicons',
         config = function()
-            require('bufferline').setup(require('configs.bufferline'))
+            require('bufferline').setup(require('config.cfg_bufferline'))
         end,
     }
     use {
         'lukas-reineke/indent-blankline.nvim',
         event = 'BufRead',
         config = function()
-            require("indent_blankline").setup(require('configs.indent'))
+            require("indent_blankline").setup(require('config.indent'))
 
         end,
     }
@@ -74,7 +74,7 @@ return require('packer').startup(function(use)
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
         config = function()
-            require('nvim-treesitter.configs').setup(require('configs.treesitter'))
+            require('nvim-treesitter.configs').setup(require('config.treesitter'))
         end,
     }
     use { 'liuchengxu/vista.vim', event = 'BufRead'}
@@ -99,10 +99,13 @@ return require('packer').startup(function(use)
             'williamboman/mason-lspconfig.nvim',
             'hrsh7th/cmp-nvim-lsp',
             'onsails/lspkind-nvim',
+            'folke/trouble.nvim',
+            'jose-elias-alvarez/null-ls.nvim',
         },
         run = ':MasonUpdate',
         config = function()
             require('plugins.lspconfig').setup()
+            require('plugins.null-ls').setup()
         end,
     }
 

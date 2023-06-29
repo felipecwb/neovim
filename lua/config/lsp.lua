@@ -50,6 +50,7 @@ return {
                 }
             }
         },
+        -- ruff_lsp = {},
         -- pylsp = {
         --     settings = {
         --         pylsp = {

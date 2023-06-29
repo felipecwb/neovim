@@ -1,11 +1,11 @@
 local module = {}
 
-local configs = require 'configs.lsp'
+local lsp_config = require 'config.lsp'
 local mappings = require 'mappings.lsp'
 
-function configs.servers_list()
+function lsp_config.servers_list()
     local servers = {}
-    for server, _ in pairs(configs.servers) do table.insert(servers, server) end
+    for server, _ in pairs(lsp_config.servers) do table.insert(servers, server) end
     return servers
 end
 
@@ -28,27 +28,30 @@ function module.setup()
     mason.setup {
         PATH = 'append',
         pip = { upgrade_pip = true },
-        ui = configs.ui.mason,
+        ui = lsp_config.ui.mason,
     }
     mason_lspconfig.setup {
-        ensure_installed = configs.servers_list(),
+        ensure_installed = lsp_config.servers_list(),
         automatic_installation = true,
     }
 
     -- diagnostics
     vim.diagnostic.config({
         severity_sort = true,
-        virtual_text = { prefix = configs.ui.diagnostic.prefix, source = "if_many" },
-        float = { border = configs.ui.diagnostic.border, source = "if_many" },
+        signs = true,
+        underline = true,
+        virtual_text = { prefix = lsp_config.ui.diagnostic.prefix, source = false },
+        float = { border = lsp_config.ui.diagnostic.border, source = "always", focusable = false },
     })
-    for type, icon in pairs(configs.ui.diagnostic.signs) do
+    for type, icon in pairs(lsp_config.ui.diagnostic.signs) do
       local hl = "DiagnosticSign" .. type
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
     end
+
     -- diagnostics disabled for certain extensions
     vim.api.nvim_create_autocmd("BufEnter", {
-      pattern = configs.disabled_extensions,
-      group = vim.api.nvim_create_augroup("diagnostic_disabled_extensions", {clear=true}),
+      pattern = lsp_config.disabled_extensions,
+      group = vim.api.nvim_create_augroup("diagnostic_disabled_extensions", { clear=true }),
       callback = function(args) vim.diagnostic.disable(args.buf) end
     })
 
@@ -59,8 +62,8 @@ function module.setup()
         capabilities = cmp.default_capabilities(capabilities)
     end
 
-    for server, config in pairs(configs.servers) do
-        config.flags = configs.flags
+    for server, config in pairs(lsp_config.servers) do
+        config.flags = lsp_config.flags
         config.capabilities = capabilities
         config.on_attach = on_attach
 
