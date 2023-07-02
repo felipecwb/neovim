@@ -4,5 +4,4 @@ require 'packages'
 require 'mappings'
 
 -- colorscheme
-require('onedark').setup({style = 'darker'})
-vim.cmd('colorscheme onedark')
+require('config.themes').setup('onedark', 'deep')

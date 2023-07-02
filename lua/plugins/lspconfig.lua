@@ -41,7 +41,7 @@ function module.setup()
         signs = true,
         underline = true,
         virtual_text = { prefix = lsp_config.ui.diagnostic.prefix, source = false },
-        float = { border = lsp_config.ui.diagnostic.border, source = "always", focusable = false },
+        float = { border = lsp_config.ui.diagnostic.border, source = "always", focusable = true },
     })
     for type, icon in pairs(lsp_config.ui.diagnostic.signs) do
       local hl = "DiagnosticSign" .. type

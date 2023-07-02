@@ -4,8 +4,6 @@ function module.setup()
     local null_ls = require("null-ls")
 
     null_ls.setup({
-        -- diagnostic_config = { virtual_text = { prefix = "●", format = function() return '' end } },
-        diagnostic_config = { signs = true, underline = true, virtual_text = false },
         sources = {
             null_ls.builtins.formatting.stylua,
             null_ls.builtins.formatting.prettier,
