@@ -12,7 +12,8 @@ return require('packer').startup(function(use)
     -- themes
     use {
         'navarasu/onedark.nvim',
-        'marko-cerovac/material.nvim',
+        'folke/tokyonight.nvim',
+        'rebelot/kanagawa.nvim',
     }
 
     -- interface
