@@ -1,8 +1,11 @@
 return {
-    indent = { enable = true },
     highlight = {
         enable = true,
         use_languagetree = true
+    },
+    indent = {
+        enable = true,
+        disable = { "python" },
     },
     refactor = {
         highlight_definitions = { enable = true },
