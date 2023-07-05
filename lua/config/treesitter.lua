@@ -5,7 +5,7 @@ return {
     },
     indent = {
         enable = true,
-        disable = { "python" },
+        -- disable = { "python" },
     },
     refactor = {
         highlight_definitions = { enable = true },
