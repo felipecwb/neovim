@@ -12,6 +12,11 @@ function module.setup()
     mason_dapconfig.setup({
         ensure_installed = config.installed,
         automatic_installation = true,
+        handlers = {
+            function(_config)
+                require('mason-nvim-dap').default_setup(_config)
+            end,
+        }
     })
 
     -- binds
@@ -24,7 +29,7 @@ function module.setup()
 
     -- UI
     for name, icon in pairs(config.ui.signs or {}) do
-        vim.fn.sign_define(name, { text = icon, texthl ='', linehl ='', numhl ='' })
+        vim.fn.sign_define(name, { text = icon, texthl = '', linehl = '', numhl = '' })
     end
 
     -- keys
