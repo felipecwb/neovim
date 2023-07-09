@@ -91,21 +91,36 @@ return require('packer').startup(function(use)
         end,
     }
 
+    use {
+        'williamboman/mason.nvim',
+        run = ':MasonUpdate',
+        config = function ()
+            require('mason').setup(require('config.cfg_mason'))
+        end
+    }
     -- LSP powers
     use {
         'neovim/nvim-lspconfig',
         requires = {
-            'williamboman/mason.nvim',
             'williamboman/mason-lspconfig.nvim',
             'hrsh7th/cmp-nvim-lsp',
             'onsails/lspkind-nvim',
-            'folke/trouble.nvim',
             'jose-elias-alvarez/null-ls.nvim',
         },
-        run = ':MasonUpdate',
         config = function()
             require('plugins.lspconfig').setup()
             require('plugins.null-ls').setup()
+        end,
+    }
+    -- DAP
+    use {
+        'rcarriga/nvim-dap-ui',
+        requires = {
+            'mfussenegger/nvim-dap',
+            'jay-babu/mason-nvim-dap.nvim',
+        },
+        config = function ()
+            require('plugins.nvim-dap').setup()
         end,
     }
 

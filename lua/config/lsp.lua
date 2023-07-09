@@ -1,12 +1,5 @@
 return {
     ui = {
-        mason = {
-            icons = {
-                package_installed = "✓",
-                package_pending = "➜",
-                package_uninstalled = "✗"
-            }
-        },
         diagnostic = {
             border = "rounded",
             prefix = "▎", -- "●",

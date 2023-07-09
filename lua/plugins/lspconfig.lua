@@ -20,16 +20,10 @@ local function on_attach(_, bufnr)
 end
 
 function module.setup()
-    local mason = require "mason"
     local mason_lspconfig = require "mason-lspconfig"
     local lspconfig = require "lspconfig"
 
     -- mason
-    mason.setup {
-        PATH = 'append',
-        pip = { upgrade_pip = true },
-        ui = lsp_config.ui.mason,
-    }
     mason_lspconfig.setup {
         ensure_installed = lsp_config.servers_list(),
         automatic_installation = true,
