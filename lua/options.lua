@@ -9,7 +9,7 @@ vim.opt.clipboard = { 'unnamed', 'unnamedplus' }
 
 vim.opt.mouse = 'a'
 vim.opt.mousemodel = 'popup'
-vim.opt.guifont = 'Hack Nerd Font Mono:h12'
+vim.opt.guifont = 'Hack Nerd Font:h12'
 vim.opt.guicursor = 'a:blinkon0'
 
 vim.opt.scrolloff = 3
