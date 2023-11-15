@@ -4,7 +4,7 @@ local dap_config = {
     },
     ui = {
         signs = {
-            DapBreakpoint = '🟥',
+            DapBreakpoint = '',
             DapStopped = '▶️',
         }
     },

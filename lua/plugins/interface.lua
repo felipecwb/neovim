@@ -96,6 +96,26 @@ return {
         end,
     },
     {
+        'akinsho/bufferline.nvim',
+        dependencies = {'kyazdani42/nvim-web-devicons'},
+        config = function()
+            require('bufferline').setup({
+                options = {
+                    themeable = true,
+                    separator_style = 'slant',
+                    indicator = {style = 'icon'},
+                    offsets = { {filetype = "NvimTree", text = "File Explorer", text_align = "center"} },
+                    diagnostics = "nvim_lsp",
+                    show_tab_indicators = true,
+                    show_close_icon = true,
+                    show_buffer_close_icons = true,
+                    always_show_bufferline = true,
+                    enforce_regular_tabs = false,
+                },
+            })
+        end,
+    },
+    {
         "nvim-lualine/lualine.nvim",
         dependencies = {'kyazdani42/nvim-web-devicons'},
         config = function()
@@ -110,48 +130,29 @@ return {
         end,
     },
     {
-        'akinsho/bufferline.nvim',
-        dependencies = {'kyazdani42/nvim-web-devicons'},
+        'lukas-reineke/indent-blankline.nvim',
+        event = 'BufRead',
         config = function()
-            require('bufferline').setup({
-                options = {
-                    themeable = true,
-                    separator_style = 'thin', -- 'slant'
-                    indicator = { style = 'icon', icon = ' ' },
-                    offsets = { { filetype = "NvimTree", text = "File Explorer", text_align = "center" } },
-                    diagnostics = "nvim_lsp",
-                    show_tab_indicators = true,
-                    show_close_icon = true,
-                    show_buffer_close_icons = true,
-                    always_show_bufferline = true,
-                    enforce_regular_tabs = false,
+            require("ibl").setup({
+                scope = { enabled = false },
+                indent = { char = "│", tab_char = "│" },
+                exclude = {
+                    filetypes = {
+                        "help",
+                        "alpha",
+                        "dashboard",
+                        "neo-tree",
+                        "Trouble",
+                        "trouble",
+                        "lazy",
+                        "mason",
+                        "notify",
+                        "toggleterm",
+                        "lazyterm",
+                    },
                 },
             })
         end,
-    },
-    {
-        'lukas-reineke/indent-blankline.nvim',
-        event = 'BufRead',
-        main = "ibl",
-        opts = {
-            scope = { enabled = false },
-            indent = { char = "│", tab_char = "│" },
-            exclude = {
-                filetypes = {
-                    "help",
-                    "alpha",
-                    "dashboard",
-                    "neo-tree",
-                    "Trouble",
-                    "trouble",
-                    "lazy",
-                    "mason",
-                    "notify",
-                    "toggleterm",
-                    "lazyterm",
-                },
-            },
-        },
     },
     {
         'nvim-telescope/telescope.nvim',
