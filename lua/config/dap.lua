@@ -6,6 +6,7 @@ return {
         }
     },
     installed = {
-        'python'
+        'python',
+        'go',
     },
 }
