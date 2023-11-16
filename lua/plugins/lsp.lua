@@ -1,6 +1,8 @@
 return {
     {
         'williamboman/mason.nvim',
+        lazy = false,
+        priority = 60,
         config = function ()
             require('mason').setup({
                 PATH = 'append',
@@ -18,6 +20,7 @@ return {
     {
         'neovim/nvim-lspconfig',
         dependencies = {
+            'williamboman/mason.nvim',
             'williamboman/mason-lspconfig.nvim',
             'hrsh7th/cmp-nvim-lsp',
             'onsails/lspkind-nvim',

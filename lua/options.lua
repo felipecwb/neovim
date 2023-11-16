@@ -5,7 +5,7 @@ vim.opt.numberwidth = 2
 vim.opt.cursorline = true
 
 vim.opt.termguicolors = true
-vim.opt.clipboard = { 'unnamed', 'unnamedplus' }
+vim.opt.clipboard = { 'unnamedplus' }
 
 vim.opt.mouse = 'a'
 vim.opt.mousemodel = 'popup'
