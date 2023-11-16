@@ -32,6 +32,8 @@ local config = {
                 }
             }
         },
+        gopls = {},
+        ruff_lsp = {},
         pyright = {
             settings = {
                 python = {
@@ -45,29 +47,7 @@ local config = {
                 }
             }
         },
-        ruff_lsp = {},
-        -- pylsp = {
-        --     settings = {
-        --         pylsp = {
-        --             configurationSources = { "flake8", "black", "mypy" },
-        --             plugins = {
-        --                 jedi = {
-        --                     extra_paths = { ".", "src" }
-        --                 },
-        --                 flake8 = {
-        --                     enabled = false,
-        --                     ignore = { "E203", "E241", "W503" },
-        --                 },
-        --                 black = { enabled = true },
-        --                 mypy = { enabled = false, live_mode = false },
-        --                 pylint = { enabled = false },
-        --                 pyflakes = { enabled = false },
-        --                 pycodestyle = { enabled = false },
-        --                 pydocstyle = { enabled = false },
-        --             }
-        --         }
-        --     }
-        -- },
+        rust_analyzer = {},
     },
 }
 
