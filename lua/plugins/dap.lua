@@ -1,15 +1,3 @@
-local dap_config = {
-    installed = {
-        'python'
-    },
-    ui = {
-        signs = {
-            DapBreakpoint = '',
-            DapStopped = '▶️',
-        }
-    },
-}
-
 return {
     {
         'rcarriga/nvim-dap-ui',
@@ -18,10 +6,11 @@ return {
             'jay-babu/mason-nvim-dap.nvim',
             'williamboman/mason.nvim',
         },
-        config = function ()
+        config = function()
             local dap = require("dap")
             local dapui = require("dapui")
             local mason_dapconfig = require('mason-nvim-dap')
+            local dap_config = require("config.dap")
 
             -- setup
             dapui.setup()
@@ -49,8 +38,8 @@ return {
             end
 
             -- keys
-            vim.keymap.set('n', '<F4>',  dap.toggle_breakpoint)
-            vim.keymap.set('n', '<F5>',  dap.continue)
+            vim.keymap.set('n', '<F4>', dap.toggle_breakpoint)
+            vim.keymap.set('n', '<F5>', dap.continue)
             vim.keymap.set('n', '<F10>', dap.step_over)
             vim.keymap.set('n', '<F11>', dap.step_into)
             vim.keymap.set('n', '<F12>', dap.step_out)

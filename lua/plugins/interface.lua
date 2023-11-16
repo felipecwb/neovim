@@ -37,7 +37,7 @@ return {
     },
     {
         'kyazdani42/nvim-tree.lua',
-        dependencies = {'kyazdani42/nvim-web-devicons'},
+        dependencies = {'nvim-tree/nvim-web-devicons'},
         config = function()
             require("nvim-tree").setup({
                 hijack_netrw = true,
@@ -97,7 +97,7 @@ return {
     },
     {
         'akinsho/bufferline.nvim',
-        dependencies = {'kyazdani42/nvim-web-devicons'},
+        dependencies = {'nvim-tree/nvim-web-devicons'},
         config = function()
             require('bufferline').setup({
                 options = {
@@ -117,7 +117,7 @@ return {
     },
     {
         "nvim-lualine/lualine.nvim",
-        dependencies = {'kyazdani42/nvim-web-devicons'},
+        dependencies = {'nvim-tree/nvim-web-devicons'},
         config = function()
             require('lualine').setup({
                 extensions = {
@@ -158,7 +158,7 @@ return {
         'nvim-telescope/telescope.nvim',
         dependencies = {
             { 'nvim-lua/plenary.nvim' },
-            { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+            { 'nvim-telescope/telescope-fzf-native.nvim' }
         }
     },
     {

@@ -1,8 +1,8 @@
 return {
     { 'tpope/vim-fugitive' },
-    { 'liuchengxu/vista.vim', event = 'BufRead'},
+    { 'liuchengxu/vista.vim',   event = 'BufRead' },
     { 'mg979/vim-visual-multi', event = 'BufRead' },
-    { 'andymass/vim-matchup', event = 'CursorMoved' },
+    { 'andymass/vim-matchup',   event = 'CursorMoved' },
     {
         'terrortylor/nvim-comment',
         cmd = 'CommentToggle',

@@ -27,8 +27,8 @@ return {
             local function previous_item(fallback)
                 if cmp.visible() then
                     cmp.select_prev_item()
-                elseif luasnip.jumpable( -1) then
-                    luasnip.jump( -1)
+                elseif luasnip.jumpable(-1) then
+                    luasnip.jump(-1)
                 else
                     fallback()
                 end
@@ -63,6 +63,7 @@ return {
                     ['<Down>'] = cmp.mapping(next_item, { "i", "s" }),
                     ['<Up>'] = cmp.mapping(previous_item, { "i", "s" }),
                     ['<Esc>'] = cmp.mapping.close(),
+                    ['<Right>'] = cmp.mapping.close(),
                     ['<CR>'] = cmp.mapping.confirm({
                         behavior = cmp.ConfirmBehavior.Insert,
                         select = true

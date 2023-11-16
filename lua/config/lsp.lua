@@ -1,4 +1,4 @@
-return {
+local config = {
     ui = {
         diagnostic = {
             border = "rounded",
@@ -7,7 +7,9 @@ return {
         },
     },
     flags = { debounce_text_changes = 200 },
-    disabled_extensions = { "*.env" },
+    disabled_extensions = {
+        "*.env"
+    },
     servers = {
         bashls = {},
         clangd = {},
@@ -34,7 +36,7 @@ return {
             settings = {
                 python = {
                     analysis = {
-                        extraPaths = {".", "src"},
+                        extraPaths = { ".", "src" },
                         diagnosticMode = "workspace",
                         autoSearchPaths = true,
                         autoImportCompletions = true,
@@ -43,7 +45,7 @@ return {
                 }
             }
         },
-        -- ruff_lsp = {},
+        ruff_lsp = {},
         -- pylsp = {
         --     settings = {
         --         pylsp = {
@@ -68,3 +70,14 @@ return {
         -- },
     },
 }
+
+
+function config.servers_list()
+    local servers = {}
+    for server, _ in pairs(config.servers) do
+        table.insert(servers, server)
+    end
+    return servers
+end
+
+return config

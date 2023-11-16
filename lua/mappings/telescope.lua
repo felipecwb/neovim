@@ -7,4 +7,3 @@ fn.map("n", "<leader>b", [[<Cmd> Telescope buffers <CR>]])
 fn.map("n", "<Leader>gs", [[<Cmd> Telescope git_status <CR>]])
 fn.map("n", "<Leader>gc", [[<Cmd> Telescope git_commits <CR>]])
 fn.map('n', '<leader>dd', [[<Cmd>Telescope diagnostics<CR>]])
-
