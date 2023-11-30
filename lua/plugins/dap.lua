@@ -18,8 +18,12 @@ return {
                 ensure_installed = dap_config.installed,
                 automatic_installation = true,
                 handlers = {
-                    function(_config)
-                        require('mason-nvim-dap').default_setup(_config)
+                    function(config)
+                        mason_dapconfig.default_setup(config)
+                    end,
+                    python = function(config)
+                        config.adapters = dap_config.adapters.python()
+                        mason_dapconfig.default_setup(config)
                     end,
                 }
             })
