@@ -21,10 +21,10 @@ return {
                     function(config)
                         mason_dapconfig.default_setup(config)
                     end,
-                    python = function(config)
-                        config.adapters = dap_config.adapters.python()
-                        mason_dapconfig.default_setup(config)
-                    end,
+                    -- python = function(config)
+                    --     config.adapters = dap_config.adapters.python()
+                    --     mason_dapconfig.default_setup(config)
+                    -- end,
                 }
             })
 

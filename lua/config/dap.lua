@@ -6,17 +6,17 @@ return {
         }
     },
     installed = {
-        'python',
-        'delve', -- golang
+        'debugpy',
+        'delve',
     },
     adapters = {
-        python = function()
-            return {
-                type = 'executable',
-                command = '.venv/bin/python',
-                args = { '-m', 'debugpy.adapter' },
-                options = { cwd = vim.fn.getcwd() },
-            }
-        end,
+        -- python = function()
+        --     return {
+        --         type = 'executable',
+        --         command = '.venv/bin/python',
+        --         args = { '-m', 'debugpy.adapter' },
+        --         options = { cwd = vim.fn.getcwd() },
+        --     }
+        -- end,
     },
 }
