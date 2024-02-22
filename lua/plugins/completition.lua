@@ -4,11 +4,12 @@ return {
         dependencies = {
             'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-path',
-            'hrsh7th/cmp-nvim-lsp',
             'saadparwaiz1/cmp_luasnip',
+            'hrsh7th/cmp-nvim-lsp',
             'L3MON4D3/LuaSnip',
             'onsails/lspkind-nvim',
         },
+        event = "InsertEnter",
         config = function()
             local cmp = require 'cmp'
             local luasnip = require 'luasnip'
@@ -35,14 +36,14 @@ return {
             end
 
             cmp.setup({
-                sources = cmp.config.sources({
-                    { name = "copilot", group_index = 3 },
-                    { name = 'nvim_lsp', group_index = 2 },
-                    { name = 'luasnip', group_index = 1 },
-                }, {
+                sources = {
+                    { name = "copilot" },
+                    { name = 'nvim_lsp' },
+                    { name = 'luasnip' },
+                    { name = 'treesitter' },
                     { name = 'buffer' },
                     { name = 'path' },
-                }),
+                },
                 snippet = {
                     expand = function(args)
                         luasnip.lsp_expand(args.body)
