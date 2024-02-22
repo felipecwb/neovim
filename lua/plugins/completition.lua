@@ -36,8 +36,9 @@ return {
 
             cmp.setup({
                 sources = cmp.config.sources({
-                    { name = 'nvim_lsp' },
-                    { name = 'luasnip' },
+                    { name = "copilot", group_index = 3 },
+                    { name = 'nvim_lsp', group_index = 2 },
+                    { name = 'luasnip', group_index = 1 },
                 }, {
                     { name = 'buffer' },
                     { name = 'path' },
@@ -50,9 +51,9 @@ return {
                 formatting = {
                     format = lspkind.cmp_format({
                         mode = 'symbol_text',
-                        -- preset = 'codicons',
                         maxwidth = 50,
                         ellipsis_char = '...',
+                        symbol_map = { Copilot = "" },
                     })
                 },
                 completion = { completeopt = 'menu,menuone,noinsert' },
@@ -68,16 +69,6 @@ return {
                         behavior = cmp.ConfirmBehavior.Insert,
                         select = true
                     }),
-                    -- Copilot integration
-                    ["<C-j>"] = cmp.mapping(function(fallback)
-                        cmp.mapping.abort()
-                        local copilot_keys = vim.fn["copilot#Accept"]()
-                        if copilot_keys ~= "" then
-                            vim.api.nvim_feedkeys(copilot_keys, "i", true)
-                        else
-                            fallback()
-                        end
-                    end),
                 },
             })
         end,

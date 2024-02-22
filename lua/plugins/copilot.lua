@@ -1,10 +1,21 @@
 return {
     {
-        "github/copilot.vim",
+        "zbirenbaum/copilot.lua",
+        cmd = "Copilot",
+        event = "InsertEnter",
         config = function()
-            vim.g.copilot_no_tab_map = true
-            vim.g.copilot_assume_mapped = true
-            -- vim.g.copilot_tab_fallback = ""
-        end
+            require("copilot").setup({
+                panel = { enabled = false },
+                suggestion = { enabled = false },
+            })
+        end,
     },
+    {
+        "zbirenbaum/copilot-cmp",
+        config = function ()
+            require("copilot_cmp").setup({
+                event = { "InsertEnter", "LspAttach" }
+            })
+        end
+    }
 }
