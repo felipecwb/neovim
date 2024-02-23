@@ -4,11 +4,12 @@ return {
         dependencies = {
             'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-path',
-            'hrsh7th/cmp-nvim-lsp',
             'saadparwaiz1/cmp_luasnip',
+            'hrsh7th/cmp-nvim-lsp',
             'L3MON4D3/LuaSnip',
             'onsails/lspkind-nvim',
         },
+        event = "InsertEnter",
         config = function()
             local cmp = require 'cmp'
             local luasnip = require 'luasnip'
@@ -35,13 +36,14 @@ return {
             end
 
             cmp.setup({
-                sources = cmp.config.sources({
+                sources = {
+                    { name = "copilot" },
                     { name = 'nvim_lsp' },
                     { name = 'luasnip' },
-                }, {
+                    { name = 'treesitter' },
                     { name = 'buffer' },
                     { name = 'path' },
-                }),
+                },
                 snippet = {
                     expand = function(args)
                         luasnip.lsp_expand(args.body)
@@ -50,9 +52,9 @@ return {
                 formatting = {
                     format = lspkind.cmp_format({
                         mode = 'symbol_text',
-                        -- preset = 'codicons',
                         maxwidth = 50,
                         ellipsis_char = '...',
+                        symbol_map = { Copilot = "" },
                     })
                 },
                 completion = { completeopt = 'menu,menuone,noinsert' },
@@ -68,16 +70,6 @@ return {
                         behavior = cmp.ConfirmBehavior.Insert,
                         select = true
                     }),
-                    -- Copilot integration
-                    ["<C-j>"] = cmp.mapping(function(fallback)
-                        cmp.mapping.abort()
-                        local copilot_keys = vim.fn["copilot#Accept"]()
-                        if copilot_keys ~= "" then
-                            vim.api.nvim_feedkeys(copilot_keys, "i", true)
-                        else
-                            fallback()
-                        end
-                    end),
                 },
             })
         end,
