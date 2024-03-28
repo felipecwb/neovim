@@ -37,10 +37,10 @@ return {
 
             cmp.setup({
                 sources = {
-                    { name = "copilot" },
                     { name = 'nvim_lsp' },
                     { name = 'luasnip' },
                     { name = 'treesitter' },
+                    { name = "copilot", keyword_length = 3 },
                     { name = 'buffer' },
                     { name = 'path' },
                 },
