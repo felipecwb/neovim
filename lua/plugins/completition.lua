@@ -40,9 +40,9 @@ return {
                     { name = 'nvim_lsp' },
                     { name = 'luasnip' },
                     { name = 'treesitter' },
-                    { name = "copilot", keyword_length = 3 },
                     { name = 'buffer' },
                     { name = 'path' },
+                    { name = 'copilot', keyword_length = 2}
                 },
                 snippet = {
                     expand = function(args)
@@ -64,7 +64,7 @@ return {
                     ['<S-Tab>'] = cmp.mapping(previous_item, { "i", "s" }),
                     ['<Down>'] = cmp.mapping(next_item, { "i", "s" }),
                     ['<Up>'] = cmp.mapping(previous_item, { "i", "s" }),
-                    ['<Esc>'] = cmp.mapping.close(),
+                    ['<Esc>'] = cmp.mapping.abort(),
                     ['<Right>'] = cmp.mapping.close(),
                     ['<CR>'] = cmp.mapping.confirm({
                         behavior = cmp.ConfirmBehavior.Insert,
