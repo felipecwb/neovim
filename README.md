@@ -6,6 +6,5 @@ My personal Neovim config
 
 ```sh
 git clone git@github.com:felipecwb/neovim.git ~/.config/nvim
-nvim +PackerSync
 ```
 
