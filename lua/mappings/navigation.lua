@@ -17,7 +17,7 @@ fn.map("n", "<C-Right>", "<C-w>l")
 
 -- nvimtree
 fn.map("n", "<C-e>", ":NvimTreeToggle<CR>")
-fn.map("n", "<A-e>", ":NvimTreeFindFile<CR>")
+fn.map("n", "<C-S-e>", ":NvimTreeFindFile<CR>")
 
 -- vista
 fn.map("n", "<A-t>", [[<Cmd>Vista<CR>]])

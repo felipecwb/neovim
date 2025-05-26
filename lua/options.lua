@@ -60,4 +60,4 @@ vim.opt.wildignore:append('*.o,*.obj,.git,*.rbc,*.pyc,__pycache__')
 vim.opt.grepprg = 'rg --vimgrep'
 vim.opt.grepformat = '%f:%l:%c:%m'
 
-vim.opt.shell = '/usr/bin/zsh'
+vim.opt.shell = '/bin/zsh'

@@ -14,7 +14,7 @@ local config = {
         bashls = {},
         clangd = {},
         clojure_lsp = {},
-        cmake = {},
+        -- cmake = {},
         dockerls = {},
         eslint = {
             settings = {
@@ -33,7 +33,8 @@ local config = {
             }
         },
         gopls = {},
-        ruff_lsp = {},
+        ruff = {},
+        -- basedpyright = {
         pyright = {
             settings = {
                 python = {

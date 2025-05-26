@@ -28,7 +28,6 @@ return {
         config = function()
             local lsp_config = require 'config.lsp'
             local mappings = require 'mappings.lsp'
-            local lspconfig = require "lspconfig"
 
             local function on_attach(_, bufnr)
                 -- Enable completion triggered by <c-x><c-o>
@@ -79,7 +78,8 @@ return {
                 config.capabilities = capabilities
                 config.on_attach = on_attach
 
-                lspconfig[server].setup(config)
+                vim.lsp.enable(server)
+                vim.lsp.config(server, config)
             end
         end,
     },

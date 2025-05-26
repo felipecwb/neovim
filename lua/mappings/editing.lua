@@ -44,6 +44,6 @@ fn.map("v", "<S-Down>", ":'<,'>move '>+1<CR>gv")
 
 -- vim-visual-multi: mappings
 vim.g.VM_maps = {
-    ['Add Cursor Up']   = '<S-A-Up>',
-    ['Add Cursor Down'] = '<S-A-Down>',
+    ['Add Cursor Up']   = '<S-M-Up>',
+    ['Add Cursor Down'] = '<S-M-Down>',
 }
