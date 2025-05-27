@@ -39,7 +39,6 @@ return {
                 end
             end
 
-
             -- mason lspconfig
             require("mason-lspconfig").setup {
                 ensure_installed = lsp_config.servers_list(),
@@ -73,13 +72,15 @@ return {
                 capabilities = cmp.default_capabilities(capabilities)
             end
 
-            for server, config in pairs(lsp_config.servers) do
-                config.flags = lsp_config.flags
-                config.capabilities = capabilities
-                config.on_attach = on_attach
+            vim.lsp.config('*', {
+                flags = lsp_config.flags,
+                on_attach,
+                capabilities,
+            })
 
-                vim.lsp.enable(server)
+            for server, config in pairs(lsp_config.servers) do
                 vim.lsp.config(server, config)
+                vim.lsp.enable(server)
             end
         end,
     },
