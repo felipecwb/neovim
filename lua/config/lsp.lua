@@ -3,7 +3,12 @@ local config = {
         diagnostic = {
             border = "rounded",
             prefix = "▎", -- "●",
-            signs = { Error = "", Warn = "", Hint = "", Info = "" },
+            signs = {
+                error = { text = "", texthl = "DiagnosticSignError" },
+                warn = { text = "", texthl = "DiagnosticSignWarn" },
+                hint = { text = "", texthl = "DiagnosticSignHint" },
+                info = { text = "", texthl = "DiagnosticSigninfo" },
+            }
         },
     },
     flags = { debounce_text_changes = 200 },
@@ -33,7 +38,7 @@ local config = {
             }
         },
         gopls = {},
-        ruff_lsp = {},
+        ruff = {},
         pyright = {
             settings = {
                 python = {
