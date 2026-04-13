@@ -44,10 +44,6 @@ return {
                 disable_netrw = true,
                 open_on_tab = true,
                 update_cwd = false,
-                system_open = {
-                    cmd = "xdg-open",
-                    args = {}
-                },
                 filters = {
                     dotfiles = false,
                     custom = {}
